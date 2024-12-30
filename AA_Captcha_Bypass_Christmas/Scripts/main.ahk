@@ -1,11 +1,11 @@
-﻿#Requires AutoHotkey v2
+#Requires AutoHotkey v2
 CoordMode "Pixel", "Screen"  ; Ensure pixel color coordinates are relative to the screen
 CoordMode "Mouse", "Screen"  ; Ensure mouse coordinates are relative to the screen
 
 ; Get the directory of the current script
 ScriptDir := A_ScriptDir
 ; Define the relative path to your OCR script
-OCRScriptPath := ScriptDir . "\scan_text.ahk"
+OCRScriptPath := ScriptDir . "\..\Scripts\scan_text.ahk"
 ; Define the relative path to your images
 ImagePath1 := ScriptDir . "\..\Images\return.png"
 ImagePath2 := ScriptDir . "\..\Images\return_2.png"
