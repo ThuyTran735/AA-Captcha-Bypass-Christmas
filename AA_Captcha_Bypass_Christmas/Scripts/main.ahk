@@ -35,59 +35,11 @@ SendClick(x, y)
     Sleep(100)  ; Delay after the click
 }
 
-; Function to get the RGB color of a pixel at the specified coordinates
-GetPixelColor(x, y)
-{
-    color := PixelGetColor(x, y, true)
-    red := (color >> 16) & 0xFF
-    green := (color >> 8) & 0xFF
-    blue := color & 0xFF
-    return [red, green, blue]
-}
-
-; Function to check if the RGB values match
-CheckPixelColors()
-{
-    Pixel1 := GetPixelColor(650, 380)
-    Pixel2 := GetPixelColor(701, 380)
-    Pixel3 := GetPixelColor(880, 376)
-
-    Tooltip("Checking colors: Pixel1 = " . Pixel1[1] . ", " . Pixel1[2] . ", " . Pixel1[3] . " | Pixel2 = " . Pixel2[1] . ", " . Pixel2[2] . ", " . Pixel2[3] . " | Pixel3 = " . Pixel3[1] . ", " . Pixel3[2] . ", " . Pixel3[3])
-    Sleep(1000)
-
-    if (Pixel1[1] = 71 && Pixel1[2] = 184 && Pixel1[3] = 253) &&
-       (Pixel2[1] = 71 && Pixel2[2] = 184 && Pixel2[3] = 253) &&
-       (Pixel3[1] = 78 && Pixel3[2] = 187 && Pixel3[3] = 253)
-    {
-        return true
-    }
-    return false
-}
-
 ; Function to repeatedly check pixels and click until both images are found
 ClickUntilImagesFound_Return()
 {
     Loop
     {
-        ; Check pixel colors before clicking
-        if (CheckPixelColors())
-        {
-            Tooltip("Pixel colors match, clicking at 766, 747")
-            Loop 10
-            {
-                SendClick(766, 747)
-                Tooltip("Clicked at 766, 747")
-                Sleep(500)
-                Tooltip() ; Hide tooltip
-            }
-        }
-        else
-        {
-            Tooltip("Pixel colors do not match")
-            Sleep(1000) ; Wait for 1 second before checking again
-            Tooltip() ; Hide tooltip
-        }
-
         if (ImagesFound_Return())
         {
             ; Click X: 799 Y: 219 five times with 500 ms sleep in between
@@ -106,6 +58,7 @@ ClickUntilImagesFound_Return()
             Tooltip("Both images not found")
             Sleep(1000) ; Wait for 1 second before checking again
             Tooltip() ; Hide tooltip
+            SendClick(772, 749)
         }
 
         Sleep(1000)  ; Wait for 1 second before checking again
