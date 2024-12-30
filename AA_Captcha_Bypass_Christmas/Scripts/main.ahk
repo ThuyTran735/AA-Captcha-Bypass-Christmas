@@ -1,4 +1,4 @@
-﻿#Requires AutoHotkey v2
+#Requires AutoHotkey v2
 
 CoordMode "Pixel", "Screen"  ; Ensure pixel color coordinates are relative to the screen
 CoordMode "Mouse", "Screen"  ; Ensure mouse coordinates are relative to the screen
@@ -22,9 +22,15 @@ AutoHotkeyPath := "C:\Program Files\AutoHotkey\v2\AutoHotkey.exe"
 
 ; Function to send click at specified coordinates
 SendClick(x, y) {
-    MouseMove(x, y)
-    Sleep(500)
-    Click
+    ; Move the mouse slightly before the main move
+    MouseMove(x + 5, y + 5)
+    Sleep(100)  ; Short delay to ensure Roblox detects the move
+    MouseMove(x, y)  ; Move to the target position
+    Sleep(100)  ; Optional delay for stability
+    Click("Left", "Down")  ; Press down
+    Sleep(50)  ; Hold down for a moment
+    Click("Left", "Up")    ; Release
+    Sleep(100)  ; Delay after the click
 }
 
 ; Function to get the RGB color of a pixel at the specified coordinates
@@ -110,9 +116,12 @@ ImagesFound() {
 ; Hotkey to trigger the pixel color check and clicking loop
 ^F4:: ; Ctrl+F4 to start the pixel scan and clicking loop
 {
-    Sleep(2000) 
-    ; Initial click to focus on the Roblox application 
-    SendClick(1, 1) 
+    ; Before starting the main script actions, move the mouse first
+    MouseMove(300, 300)
+    Sleep(100)  ; Small sleep to simulate user activity
+    MouseMove(100, 100)  ; Simulate user moving the mouse
+    Sleep(500)  ; Ensure Roblox detects it
+
     Sleep(1000)
     SendClick(163, 503)
     Sleep(1000)
