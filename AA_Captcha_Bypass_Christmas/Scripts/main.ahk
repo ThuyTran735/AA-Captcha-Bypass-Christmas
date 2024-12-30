@@ -1,5 +1,4 @@
-#Requires AutoHotkey v2
-
+﻿#Requires AutoHotkey v2
 CoordMode "Pixel", "Screen"  ; Ensure pixel color coordinates are relative to the screen
 CoordMode "Mouse", "Screen"  ; Ensure mouse coordinates are relative to the screen
 
@@ -10,6 +9,8 @@ OCRScriptPath := ScriptDir . "\scan_text.ahk"
 ; Define the relative path to your images
 ImagePath1 := ScriptDir . "\..\Images\return.png"
 ImagePath2 := ScriptDir . "\..\Images\return_2.png"
+ImagePath3 := ScriptDir . "\..\Images\yes.png"
+ImagePath4 := ScriptDir . "\..\Images\no.png"
 
 ; Path to the AutoHotkey executable (make sure this path is correct for you)
 AutoHotkeyPath := "C:\Program Files\AutoHotkey\v2\AutoHotkey.exe"
@@ -21,7 +22,8 @@ AutoHotkeyPath := "C:\Program Files\AutoHotkey\v2\AutoHotkey.exe"
 }
 
 ; Function to send click at specified coordinates
-SendClick(x, y) {
+SendClick(x, y)
+{
     ; Move the mouse slightly before the main move
     MouseMove(x + 5, y + 5)
     Sleep(100)  ; Short delay to ensure Roblox detects the move
@@ -34,7 +36,8 @@ SendClick(x, y) {
 }
 
 ; Function to get the RGB color of a pixel at the specified coordinates
-GetPixelColor(x, y) {
+GetPixelColor(x, y)
+{
     color := PixelGetColor(x, y, true)
     red := (color >> 16) & 0xFF
     green := (color >> 8) & 0xFF
@@ -43,72 +46,143 @@ GetPixelColor(x, y) {
 }
 
 ; Function to check if the RGB values match
-CheckPixelColors() {
+CheckPixelColors()
+{
     Pixel1 := GetPixelColor(650, 380)
     Pixel2 := GetPixelColor(701, 380)
     Pixel3 := GetPixelColor(880, 376)
-    
+
     Tooltip("Checking colors: Pixel1 = " . Pixel1[1] . ", " . Pixel1[2] . ", " . Pixel1[3] . " | Pixel2 = " . Pixel2[1] . ", " . Pixel2[2] . ", " . Pixel2[3] . " | Pixel3 = " . Pixel3[1] . ", " . Pixel3[2] . ", " . Pixel3[3])
     Sleep(1000)
 
     if (Pixel1[1] = 71 && Pixel1[2] = 184 && Pixel1[3] = 253) &&
        (Pixel2[1] = 71 && Pixel2[2] = 184 && Pixel2[3] = 253) &&
-       (Pixel3[1] = 78 && Pixel3[2] = 187 && Pixel3[3] = 253) {
+       (Pixel3[1] = 78 && Pixel3[2] = 187 && Pixel3[3] = 253)
+    {
         return true
     }
     return false
 }
 
 ; Function to repeatedly check pixels and click until both images are found
-ClickUntilImagesFound() {
-    Loop {
+ClickUntilImagesFound_Return()
+{
+    Loop
+    {
         ; Check pixel colors before clicking
-        if (CheckPixelColors()) {
+        if (CheckPixelColors())
+        {
             Tooltip("Pixel colors match, clicking at 766, 747")
-            Loop 10 {
+            Loop 10
+            {
                 SendClick(766, 747)
                 Tooltip("Clicked at 766, 747")
                 Sleep(500)
                 Tooltip() ; Hide tooltip
             }
-        } else {
+        }
+        else
+        {
             Tooltip("Pixel colors do not match")
             Sleep(1000) ; Wait for 1 second before checking again
             Tooltip() ; Hide tooltip
         }
-        if (ImagesFound()) {
+
+        if (ImagesFound_Return())
+        {
             ; Click X: 799 Y: 219 five times with 500 ms sleep in between
             Tooltip("Both images found, clicking at 799, 219")
-            Loop 10 {
+            Loop 10
+            {
                 SendClick(799, 219)
                 Tooltip("Clicked at 799, 219")
                 Sleep(500)
                 Tooltip() ; Hide tooltip
             }
             break
-        } else {
+        }
+        else
+        {
             Tooltip("Both images not found")
             Sleep(1000) ; Wait for 1 second before checking again
             Tooltip() ; Hide tooltip
         }
+
+        Sleep(1000)  ; Wait for 1 second before checking again
+    }
+}
+
+; Function to repeatedly check pixels and click until both images are found
+ClickUntilImagesFound_Yes()
+{
+    Loop
+    {
+        if (ImagesFound_Yes())
+        {
+            ; Click X: 883 Y: 187 five times with 500 ms sleep in between
+            Tooltip("Both images found, clicking at 883, 187")
+            Loop 10
+            {
+                SendClick(883, 187)
+                Tooltip("Clicked at 883, 187")
+                Sleep(500)
+                Tooltip() ; Hide tooltip
+            }
+            break
+        }
+        else
+        {
+            Tooltip("Both images not found")
+            Sleep(1000) ; Wait for 1 second before checking again
+            Tooltip() ; Hide tooltip
+        }
+
         Sleep(1000)  ; Wait for 1 second before checking again
     }
 }
 
 ; Function to check if both images are found on the screen within the specified region
-ImagesFound() {
+ImagesFound_Return()
+{
     global ImagePath1, ImagePath2
     ImageSearchResult1 := ImageSearch(&x1, &y1, 0, 0, 1920, 1080, ImagePath1)
     ImageSearchResult2 := ImageSearch(&x2, &y2, 0, 0, 1920, 1080, ImagePath2)
-    if (ImageSearchResult1 = 1 && ImageSearchResult2 = 1) {
+    if (ImageSearchResult1 = 1 && ImageSearchResult2 = 1)
+    {
         Tooltip("ImageSearch success: Both images found at (" . x1 . ", " . y1 . ") and (" . x2 . ", " . y2 . ")")
         Sleep(1000)
         Tooltip() ; Hide tooltip
         return true
-    } else {
+    }
+    else
+    {
         Tooltip("ImageSearch failed: Both images not found")
         Sleep(1000)
         Tooltip() ; Hide tooltip
+        SendClick(971, 930)
+        return false
+    }
+}
+
+; Function to check if both images are found on the screen within the specified region
+ImagesFound_Yes()
+{
+    global ImagePath3, ImagePath4
+    ImageSearchResult3 := ImageSearch(&x3, &y3, 0, 0, 1920, 1080, ImagePath3)
+    ImageSearchResult4 := ImageSearch(&x4, &y4, 0, 0, 1920, 1080, ImagePath4)
+    if (ImageSearchResult3 = 1 && ImageSearchResult4 = 1)
+    {
+        Tooltip("ImageSearch success: Both images found at (" . x3 . ", " . y3 . ") and (" . x4 . ", " . y4 . ")")
+        Sleep(1000)
+        Tooltip() ; Hide tooltip
+        return true
+    }
+    else
+    {
+        Tooltip("ImageSearch failed: Both images not found")
+        Sleep(1000)
+        Tooltip() ; Hide tooltip
+        SendClick(971, 930)
         return false
     }
 }
@@ -116,41 +190,64 @@ ImagesFound() {
 ; Hotkey to trigger the pixel color check and clicking loop
 ^F4:: ; Ctrl+F4 to start the pixel scan and clicking loop
 {
-    ; Before starting the main script actions, move the mouse first
-    MouseMove(300, 300)
-    Sleep(100)  ; Small sleep to simulate user activity
-    MouseMove(100, 100)  ; Simulate user moving the mouse
-    Sleep(500)  ; Ensure Roblox detects it
+    ; Prompt the user for the number of iterations
+    InputBoxResult := InputBox("Enter Loop Count", "Please enter the number of times you want the loop to run:")
 
-    Sleep(1000)
-    SendClick(163, 503)
-    Sleep(1000)
-    Send("{a down}") ; Hold "a" key down 
-    Sleep(10000) ; Wait for 10 seconds
-    Send("{a up}") ; Release "a" key
-    Sleep(1000)
-    SendClick(1078, 583)
-    Sleep(1000)
-    SendClick(964, 514)
-    Sleep(100)
-    
-    ; Send Ctrl+Shift+1 to start the OCR script
-    Send("^+1")
-    Sleep(2000)
-    
-    ; Send Ctrl+Shift+C
-    Send("^+C")
-    Sleep(2000)
-    SendClick(959, 610)
-    Sleep(100)
-    Send("^v")
+    ; Get the value entered by the user
+    LoopCount := InputBoxResult.Value
 
-    ; Send Ctrl+Shift+2 to stop the OCR script
-    Sleep(500)
-    Send("^+2")
+    ; Try to convert LoopCount to a number
+    LoopCount := (LoopCount + 0) ; This will force LoopCount to be a number
 
-    Sleep(20000)
-    ClickUntilImagesFound()
+    ; Default to 10 if conversion fails (non-numeric input)
+    LoopCount := (LoopCount > 0) ? LoopCount : 10
+
+    Loop LoopCount
+    {
+        ; Before starting the main script actions, move the mouse first
+        MouseMove(300, 300)
+        Sleep(100)  ; Small sleep to simulate user activity
+        MouseMove(100, 100)  ; Simulate user moving the mouse
+        Sleep(500)  ; Ensure Roblox detects it
+
+        Sleep(1000)
+        SendClick(163, 503)
+        Sleep(1000)
+        Send("{a down}") ; Hold "a" key down
+
+        Sleep(7500) ; Wait for 7.5 seconds
+        Send("{a up}") ; Release "a" key
+        Sleep(1000)
+        SendClick(1078, 583)
+        Sleep(1000)
+        SendClick(964, 514)
+        Sleep(100)
+
+        ; Send Ctrl+Shift+1 to start the OCR script
+        Send("^+1")
+        Sleep(2000)
+
+        ; Send Ctrl+Shift+C
+        Send("^+C")
+        Sleep(2000)
+        SendClick(959, 610)
+        Sleep(100)
+        Send("^v")
+
+        ; Send Ctrl+Shift+2 to stop the OCR script
+        Sleep(500)
+        Send("^+2")
+
+        Sleep(1000)
+        SendClick(787, 695)
+
+        Sleep(15000)
+        ClickUntilImagesFound_Yes()
+        Sleep(500)
+
+        ClickUntilImagesFound_Return()
+        Sleep(25000)
+    }
 }
 
 ; Stop button to close the script
