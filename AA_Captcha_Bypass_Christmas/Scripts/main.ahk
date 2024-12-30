@@ -133,8 +133,47 @@ ClickUntilImagesFound_Yes()
         else
         {
             Tooltip("Both images not found")
-            Sleep(1000) ; Wait for 1 second before checking again
+            Sleep(1000) ; Wait for 1 second 
             Tooltip() ; Hide tooltip
+
+            ; Redo Captcha
+            MouseMove(300, 300)
+            Sleep(100)  ; Small sleep to simulate user activity
+            MouseMove(100, 100)  ; Simulate user moving the mouse
+            Sleep(500)  ; Ensure Roblox detects it
+
+            Sleep(1000)
+            SendClick(163, 503)
+            Sleep(1000)
+            Send("{a down}") ; Hold "a" key down
+
+            Sleep(7500) ; Wait for 7.5 seconds
+            Send("{a up}") ; Release "a" key
+            Sleep(1000)
+            SendClick(1078, 583)
+            Sleep(1000)
+            SendClick(964, 514)
+            Sleep(100)
+
+            ; Send Ctrl+Shift+1 to start the OCR script
+            Send("^+1")
+            Sleep(2000)
+
+            ; Send Ctrl+Shift+C
+            Send("^+C")
+            Sleep(2000)
+            SendClick(959, 610)
+            Sleep(100)
+            Send("^v")
+
+            ; Send Ctrl+Shift+2 to stop the OCR script
+            Sleep(500)
+            Send("^+2")
+
+            Sleep(1000)
+            SendClick(787, 695)
+
+            Sleep(20000)  ; Wait for 20 second before checking again
         }
 
         Sleep(1000)  ; Wait for 1 second before checking again

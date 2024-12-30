@@ -1,4 +1,3 @@
-; Based on Descolada's work. Modified by ThuyTran735.
 #Requires AutoHotkey v2
 #include ..\Lib\OCR.ahk
 
