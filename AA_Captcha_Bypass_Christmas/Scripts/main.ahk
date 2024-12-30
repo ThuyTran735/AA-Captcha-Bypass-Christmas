@@ -13,7 +13,7 @@ ImagePath3 := ScriptDir . "\..\Images\yes.png"
 ImagePath4 := ScriptDir . "\..\Images\no.png"
 
 ; Path to the AutoHotkey executable (make sure this path is correct for you)
-AutoHotkeyPath := "C:\Program Files\AutoHotkey\v2\AutoHotkey.exe"
+AutoHotkeyPath := "C:\Program Files\AutoHotkey\v2\AutoHotkey64.exe"
 
 ; Hotkeys to start and stop the OCR script
 ^+1:: ; Ctrl+Shift+1 to start the OCR script
