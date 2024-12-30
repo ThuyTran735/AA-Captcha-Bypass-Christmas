@@ -4,9 +4,11 @@ CoordMode "Mouse", "Screen"  ; Ensure mouse coordinates are relative to the scre
 
 ; Get the directory of the current script
 ScriptDir := A_ScriptDir
+
 ; Define the relative path to your OCR script
 OCRScriptPath := ScriptDir . "\..\Scripts\scan_text.ahk"
-; Define the relative path to your images
+
+; Define the paths to images
 ImagePath1 := ScriptDir . "\..\Images\return.png"
 ImagePath2 := ScriptDir . "\..\Images\return_2.png"
 ImagePath3 := ScriptDir . "\..\Images\yes.png"
@@ -134,8 +136,8 @@ ClickUntilImagesFound_Yes()
 ImagesFound_Return()
 {
     global ImagePath1, ImagePath2
-    ImageSearchResult1 := ImageSearch(&x1, &y1, 0, 0, 1920, 1080, ImagePath1)
-    ImageSearchResult2 := ImageSearch(&x2, &y2, 0, 0, 1920, 1080, ImagePath2)
+    ImageSearchResult1 := ImageSearch(&x1, &y1, 0, 0, 1920, 1080, "*20 " . ImagePath1)
+    ImageSearchResult2 := ImageSearch(&x2, &y2, 0, 0, 1920, 1080, "*20 " . ImagePath2)
     if (ImageSearchResult1 = 1 && ImageSearchResult2 = 1)
     {
         Tooltip("ImageSearch success: Both images found at (" . x1 . ", " . y1 . ") and (" . x2 . ", " . y2 . ")")
@@ -157,8 +159,8 @@ ImagesFound_Return()
 ImagesFound_Yes()
 {
     global ImagePath3, ImagePath4
-    ImageSearchResult3 := ImageSearch(&x3, &y3, 0, 0, 1920, 1080, ImagePath3)
-    ImageSearchResult4 := ImageSearch(&x4, &y4, 0, 0, 1920, 1080, ImagePath4)
+    ImageSearchResult3 := ImageSearch(&x3, &y3, 0, 0, 1920, 1080, "*20 " . ImagePath3)
+    ImageSearchResult4 := ImageSearch(&x4, &y4, 0, 0, 1920, 1080, "*20 " . ImagePath4)
     if (ImageSearchResult3 = 1 && ImageSearchResult4 = 1)
     {
         Tooltip("ImageSearch success: Both images found at (" . x3 . ", " . y3 . ") and (" . x4 . ", " . y4 . ")")
