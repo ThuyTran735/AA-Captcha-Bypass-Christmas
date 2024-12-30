@@ -1,4 +1,4 @@
-#Requires AutoHotkey v2
+﻿#Requires AutoHotkey v2
 CoordMode "Pixel", "Screen"  ; Ensure pixel color coordinates are relative to the screen
 CoordMode "Mouse", "Screen"  ; Ensure mouse coordinates are relative to the screen
 
@@ -95,7 +95,7 @@ ClickUntilImagesFound_Yes()
             Sleep(500)  ; Ensure Roblox detects it
 
             Sleep(1000)
-            SendClick(163, 503)
+            SendClick(200, 503)
             Sleep(1000)
             Send("{a down}") ; Hold "a" key down
 
@@ -125,7 +125,13 @@ ClickUntilImagesFound_Yes()
             Sleep(1000)
             SendClick(787, 695)
 
-            Sleep(20000)  ; Wait for 20 second before checking again
+            Sleep(1000)
+            SendClick(772, 749)
+
+            Sleep(1000)
+            SendClick(799, 219)
+
+            Sleep(10000)  ; Wait for 20 second before checking again
         }
 
         Sleep(1000)  ; Wait for 1 second before checking again
@@ -136,8 +142,8 @@ ClickUntilImagesFound_Yes()
 ImagesFound_Return()
 {
     global ImagePath1, ImagePath2
-    ImageSearchResult1 := ImageSearch(&x1, &y1, 0, 0, 1920, 1080, "*40 " . ImagePath1)
-    ImageSearchResult2 := ImageSearch(&x2, &y2, 0, 0, 1920, 1080, "*40 " . ImagePath2)
+    ImageSearchResult1 := ImageSearch(&x1, &y1, 0, 0, 1920, 1080, "*20 " . ImagePath1)
+    ImageSearchResult2 := ImageSearch(&x2, &y2, 0, 0, 1920, 1080, "*20 " . ImagePath2)
     if (ImageSearchResult1 = 1 && ImageSearchResult2 = 1)
     {
         Tooltip("ImageSearch success: Both images found at (" . x1 . ", " . y1 . ") and (" . x2 . ", " . y2 . ")")
@@ -159,8 +165,8 @@ ImagesFound_Return()
 ImagesFound_Yes()
 {
     global ImagePath3, ImagePath4
-    ImageSearchResult3 := ImageSearch(&x3, &y3, 0, 0, 1920, 1080, "*40 " . ImagePath3)
-    ImageSearchResult4 := ImageSearch(&x4, &y4, 0, 0, 1920, 1080, "*40 " . ImagePath4)
+    ImageSearchResult3 := ImageSearch(&x3, &y3, 0, 0, 1920, 1080, "*20 " . ImagePath3)
+    ImageSearchResult4 := ImageSearch(&x4, &y4, 0, 0, 1920, 1080, "*20 " . ImagePath4)
     if (ImageSearchResult3 = 1 && ImageSearchResult4 = 1)
     {
         Tooltip("ImageSearch success: Both images found at (" . x3 . ", " . y3 . ") and (" . x4 . ", " . y4 . ")")
@@ -202,7 +208,7 @@ ImagesFound_Yes()
         Sleep(500)  ; Ensure Roblox detects it
 
         Sleep(1000)
-        SendClick(163, 503)
+        SendClick(200, 503)
         Sleep(1000)
         Send("{a down}") ; Hold "a" key down
 
