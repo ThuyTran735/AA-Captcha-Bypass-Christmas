@@ -57,9 +57,17 @@ ClickUntilImagesFound_Return()
             Tooltip("Both images not found")
             Sleep(1000) ; Wait for 1 second before checking again
             Tooltip() ; Hide tooltip
-            SendClick(772, 749)
+						SendClick(770, 700)
 						Sleep(1000)
-						SendClick(769, 761)
+						SendClick(770, 720)
+						Sleep(1000)
+            SendClick(770, 740)
+						Sleep(1000)
+						SendClick(770, 760)
+						Sleep(1000)
+						SendClick(770, 780)
+						Sleep(1000)
+						SendClick(770, 800)
         }
 
         Sleep(1000)  ; Wait for 1 second before checking again
