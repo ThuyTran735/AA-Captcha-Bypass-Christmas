@@ -1,4 +1,4 @@
-﻿#Requires AutoHotkey v2
+#Requires AutoHotkey v2
 CoordMode "Pixel", "Screen"  ; Ensure pixel color coordinates are relative to the screen
 CoordMode "Mouse", "Screen"  ; Ensure mouse coordinates are relative to the screen
 
@@ -41,7 +41,7 @@ ClickUntilImagesFound_Return()
     {
         if (ImagesFound_Return())
         {
-            ; Click X: 799 Y: 219 five times with 500 ms sleep in between
+            ; Click X: 799 Y: 219 ten times with 500 ms sleep in between
             Tooltip("Both images found, clicking at 799, 219")
             Loop 10
             {
@@ -58,6 +58,8 @@ ClickUntilImagesFound_Return()
             Sleep(1000) ; Wait for 1 second before checking again
             Tooltip() ; Hide tooltip
             SendClick(772, 749)
+						Sleep(1000)
+						SendClick(769, 761)
         }
 
         Sleep(1000)  ; Wait for 1 second before checking again
@@ -69,7 +71,7 @@ ClickUntilImagesFound_Yes()
 {
     Loop
     {
-        if (ImagesFound_Yes())
+        if (ImogesFound_Yes())
         {
             ; Click X: 883 Y: 187 five times with 500 ms sleep in between
             Tooltip("Both images found, clicking at 883, 187")
@@ -128,6 +130,9 @@ ClickUntilImagesFound_Yes()
             Sleep(1000)
             SendClick(772, 749)
 
+						Sleep(1000)
+						SendClick(769, 761)
+
             Sleep(1000)
             SendClick(799, 219)
 
@@ -142,8 +147,8 @@ ClickUntilImagesFound_Yes()
 ImagesFound_Return()
 {
     global ImagePath1, ImagePath2
-    ImageSearchResult1 := ImageSearch(&x1, &y1, 0, 0, 1920, 1080, "*20 " . ImagePath1)
-    ImageSearchResult2 := ImageSearch(&x2, &y2, 0, 0, 1920, 1080, "*20 " . ImagePath2)
+    ImageSearchResult1 := ImageSearch(&x1, &y1, 0, 0, 1920, 1080, "*50 " . ImagePath1)
+    ImageSearchResult2 := ImageSearch(&x2, &y2, 0, 0, 1920, 1080, "*50 " . ImagePath2)
     if (ImageSearchResult1 = 1 && ImageSearchResult2 = 1)
     {
         Tooltip("ImageSearch success: Both images found at (" . x1 . ", " . y1 . ") and (" . x2 . ", " . y2 . ")")
@@ -165,8 +170,8 @@ ImagesFound_Return()
 ImagesFound_Yes()
 {
     global ImagePath3, ImagePath4
-    ImageSearchResult3 := ImageSearch(&x3, &y3, 0, 0, 1920, 1080, "*20 " . ImagePath3)
-    ImageSearchResult4 := ImageSearch(&x4, &y4, 0, 0, 1920, 1080, "*20 " . ImagePath4)
+    ImageSearchResult3 := ImageSearch(&x3, &y3, 0, 0, 1920, 1080, "*50 " . ImagePath3)
+    ImageSearchResult4 := ImageSearch(&x4, &y4, 0, 0, 1920, 1080, "*50 " . ImagePath4)
     if (ImageSearchResult3 = 1 && ImageSearchResult4 = 1)
     {
         Tooltip("ImageSearch success: Both images found at (" . x3 . ", " . y3 . ") and (" . x4 . ", " . y4 . ")")
