@@ -201,7 +201,7 @@ ImagesFound_Yes()
 ^F4:: ; Ctrl+F4 to start the pixel scan and clicking loop
 {
     ; Prompt the user for the number of iterations
-    InputBoxResult := InputBox("Enter Loop Count", "Please enter the number of times you want the loop to run:")
+    InputBoxResult := InputBox("Please enter the number of times you want the loop to run:" ,"Enter Loop Count")
 
     ; Get the value entered by the user
     LoopCount := InputBoxResult.Value
@@ -209,8 +209,12 @@ ImagesFound_Yes()
     ; Try to convert LoopCount to a number
     LoopCount := (LoopCount + 0) ; This will force LoopCount to be a number
 
-    ; Default to 10 if conversion fails (non-numeric input)
-    LoopCount := (LoopCount > 0) ? LoopCount : 10
+		if !IsNumber(LoopCount) {  ; Validate if the input is a number
+        MsgBox "Invalid input. Please enter a number."
+        continue
+    }
+    MsgBox "You entered a valid number: " LoopCount
+    ; Perform actions with the number here
 
     Loop LoopCount
     {
