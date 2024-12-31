@@ -209,9 +209,9 @@ ImagesFound_Yes()
     ; Try to convert LoopCount to a number
     LoopCount := (LoopCount + 0) ; This will force LoopCount to be a number
 
-		if !IsNumber(LoopCount) {  ; Validate if the input is a number
-				MsgBox "Invalid input. Please enter a number."
-				continue
+	if !IsNumber(LoopCount) {  ; Validate if the input is a number
+			MsgBox "Invalid input. Please enter a number."
+			continue
     }
     MsgBox "You entered a valid number: " LoopCount
     ; Perform actions with the number here
