@@ -71,7 +71,7 @@ ClickUntilImagesFound_Yes()
 {
     Loop
     {
-        if (ImogesFound_Yes())
+        if (ImagesFound_Yes())
         {
             ; Click X: 883 Y: 187 five times with 500 ms sleep in between
             Tooltip("Both images found, clicking at 883, 187")
