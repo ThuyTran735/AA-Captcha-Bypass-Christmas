@@ -197,24 +197,38 @@ ImagesFound_Yes()
     }
 }
 
+; Function to prompt for a valid number
+PromptForNumber() 
+{
+    while true {
+        ; Prompt the user for the number of iterations
+        InputBoxResult := InputBox("Please enter the number of times you want the loop to run:", "Enter Loop Count")
+
+        ; Get the value entered by the user
+        LoopCount := InputBoxResult.Value
+
+        ; Try to convert LoopCount to a number
+        LoopCount := Number(LoopCount)
+
+        if !IsNumber(LoopCount) {  ; Validate if the input is a number
+            MsgBox "Invalid input. Please enter a number."
+        } else {
+            MsgBox "You entered a valid number: " LoopCount
+
+            ; Perform actions with the number here
+            Loop LoopCount {
+                ; Your loop actions here
+            }
+
+            break
+        }
+    }
+}
+
 ; Hotkey to trigger the pixel color check and clicking loop
 ^F4:: ; Ctrl+F4 to start the pixel scan and clicking loop
 {
-    ; Prompt the user for the number of iterations
-    InputBoxResult := InputBox("Please enter the number of times you want the loop to run:" ,"Enter Loop Count")
-
-    ; Get the value entered by the user
-    LoopCount := InputBoxResult.Value
-
-    ; Try to convert LoopCount to a number
-    LoopCount := (LoopCount + 0) ; This will force LoopCount to be a number
-
-		if !IsNumber(LoopCount) {  ; Validate if the input is a number
-				MsgBox "Invalid input. Please enter a number."
-				continue
-    }
-    MsgBox "You entered a valid number: " LoopCount
-    ; Perform actions with the number here
+    PromptForNumber()
 
     Loop LoopCount
     {
