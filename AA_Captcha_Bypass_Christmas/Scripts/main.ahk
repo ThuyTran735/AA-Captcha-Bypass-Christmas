@@ -5,9 +5,6 @@ CoordMode "Mouse", "Screen"  ; Ensure mouse coordinates are relative to the scre
 ; Get the directory of the current script
 ScriptDir := A_ScriptDir
 
-; Define the relative path to your OCR script
-OCRScriptPath := ScriptDir . "\..\Scripts\scan_text.ahk"
-
 ; Define the paths to images
 ImagePath1 := ScriptDir . "\..\Images\return.png"
 ImagePath2 := ScriptDir . "\..\Images\return_2.png"
@@ -17,7 +14,7 @@ ImagePath4 := ScriptDir . "\..\Images\no.png"
 ; Hotkeys to start and stop the OCR script
 ^+1:: ; Ctrl+Shift+1 to start the OCR script
 {
-    Run(OCRScriptPath)
+    Run("\..\Scripts\scan_text.ahk")
 }
 
 ; Function to send click at specified coordinates
