@@ -1,4 +1,5 @@
 #Requires AutoHotkey v2
+#SingleInstance Force
 CoordMode "Pixel", "Screen"  ; Ensure pixel color coordinates are relative to the screen
 CoordMode "Mouse", "Screen"  ; Ensure mouse coordinates are relative to the screen
 
