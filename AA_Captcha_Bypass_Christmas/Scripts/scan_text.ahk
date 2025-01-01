@@ -13,7 +13,7 @@ global w := 600, h := 100, minsize := 5, step := 3
 Loop {
     MouseGetPos(&x, &y)
     Highlight(x-w//2, y-h//2, w, h)
-    g_CurrentText := StrLower(StrReplace(OCR.FromRect(x-w//2, y-h//2, w, h,,2).Text, " "))
+    g_CurrentText := RegExReplace(StrLower(OCR.FromRect(x-w//2, y-h//2, w, h,,2).Text), "[^a-z0-9]", "")
     ToolTip(g_CurrentText, , y+h//2+10)
     Sleep(100) ; Add a small delay to keep the loop running
 }
