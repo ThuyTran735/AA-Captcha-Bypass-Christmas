@@ -1,4 +1,4 @@
-Warning: Doesn’t work on Windows 10, only Windows 11. BEFORE ASKING FOR HELP PLEASE READ THIS AND IF YOU NEED HELP HAVE A SCREENSHOT READY.
+Warning: Might work on Windows 10, works on Windows 11. BEFORE ASKING FOR HELP PLEASE READ THIS AND IF YOU NEED HELP HAVE A SCREENSHOT READY.
 
 Step 1: Go to: https://www.autohotkey.com/ and download v2.0 NOT v1.1. 
 
