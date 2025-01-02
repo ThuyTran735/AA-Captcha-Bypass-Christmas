@@ -599,7 +599,7 @@ PromptForNumber() {
                     Loop {
                         SendClick(425, 676)
                         if (ImageFound_unit_maxed()) {
-                            Sleep(2000)
+                            Sleep(100)
                             SendClick(551, 356)
                             break
                         }
@@ -612,7 +612,7 @@ PromptForNumber() {
                         if return_check = 1 {
                             break
                         }
-                        Sleep(100) 
+                        Sleep(2000) 
                     }
                 }
 
@@ -638,7 +638,7 @@ PromptForNumber() {
                         Loop {
                             SendClick(425, 676)
                             if (ImageFound_unit_maxed()) {
-                                Sleep(2000)
+                                Sleep(100)
                                 SendClick(551, 356)
                                 break
                             }
@@ -651,7 +651,7 @@ PromptForNumber() {
                             if return_check = 1 {
                                 break
                             }
-                            Sleep(100) 
+                            Sleep(2000) 
                         }
                     }
                 }
@@ -678,7 +678,7 @@ PromptForNumber() {
                         Loop {
                             SendClick(425, 676)
                             if (ImageFound_unit_maxed()) {
-                                Sleep(2000)
+                                Sleep(100)
                                 SendClick(551, 356)
                                 break
                             }
@@ -691,7 +691,7 @@ PromptForNumber() {
                             if return_check = 1 {
                                 break
                             }
-                            Sleep(100) 
+                            Sleep(2000) 
                         }
                     }
                 }
@@ -718,7 +718,7 @@ PromptForNumber() {
                         Loop {
                             SendClick(425, 676)
                             if (ImageFound_unit_maxed()) {
-                                Sleep(2000)
+                                Sleep(100)
                                 SendClick(551, 356)
                                 break
                             }
@@ -731,7 +731,7 @@ PromptForNumber() {
                             if return_check = 1 {
                                 break
                             }
-                            Sleep(100) 
+                            Sleep(2000) 
                         }
                     }
                 }
@@ -758,7 +758,7 @@ PromptForNumber() {
                         Loop {
                             SendClick(425, 676)
                             if (ImageFound_unit_maxed()) {
-                                Sleep(2000)
+                                Sleep(100)
                                 SendClick(551, 356)
                                 break
                             }
@@ -771,7 +771,7 @@ PromptForNumber() {
                             if return_check = 1 {
                                 break
                             }
-                            Sleep(100) 
+                            Sleep(2000) 
                         }
                     }
                 }
@@ -798,7 +798,7 @@ PromptForNumber() {
                         Loop {
                             SendClick(425, 676)
                             if (ImageFound_unit_maxed()) {
-                                Sleep(2000)
+                                Sleep(100)
                                 SendClick(551, 356)
                                 break
                             }
@@ -811,7 +811,7 @@ PromptForNumber() {
                             if return_check = 1 {
                                 break
                             }
-                            Sleep(100) 
+                            Sleep(2000) 
                         }
                     }
                 }
