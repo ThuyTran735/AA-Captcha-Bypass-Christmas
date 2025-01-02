@@ -7,7 +7,7 @@ CoordMode "Mouse", "Screen"  ; Ensure mouse coordinates are relative to the scre
 ; Get the directory of the current script
 ScriptDir := A_ScriptDir
 
-OCRScriptDir := ScriptDir . "\..\Scripts\scan_text.ahk"
+OCRScriptDir := A_ScriptDir . "\..\Scripts\scan_text.ahk"
 
 ; Define the paths to images
 ImagePath1 := ScriptDir . "\..\Images\return.png"
