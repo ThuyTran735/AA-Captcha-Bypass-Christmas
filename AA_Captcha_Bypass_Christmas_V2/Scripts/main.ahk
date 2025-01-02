@@ -539,10 +539,20 @@ PromptForNumber() {
                     Send("{o up}") ; Hold "o" key up
                 }
                 Sleep(500)
+
+                Send("{Escape}")
+                Sleep(500)
+                SendClick(805, 204)
+                Sleep(500)
+                SendClick(632, 375)
+                Sleep(500)
+                SendClick(893, 374)
+                Sleep(500)
+                Send("{Escape}")
                 
                 Loop {     
                     ; Search for the color
-                    if PixelSearch(&xxx, &yyy, 0, 0, 1920, 1080, 0x005c75, 15) {
+                    if PixelSearch(&xxx, &yyy, 0, 0, 1920, 1080, 0x006783, 15) {
                         ; If the color is found, move the mouse and right click
                         Loop 3 {
                             SendClick_R(xxx, yyy)
@@ -556,7 +566,16 @@ PromptForNumber() {
                     Sleep(500)
                     Send("{Right up}")
                 }
-                
+
+                Send("{Escape}")
+                Sleep(500)
+                SendClick(805, 204)
+                Sleep(500)
+                SendClick(632, 375)
+                Sleep(500)
+                SendClick(1336, 375)
+                Sleep(500)
+                Send("{Escape}")
                 
                 Loop Unit_Slot_1 {
                     Loop {
