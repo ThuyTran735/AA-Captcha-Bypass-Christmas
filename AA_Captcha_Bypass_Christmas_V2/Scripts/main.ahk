@@ -20,6 +20,8 @@ ImagePath7 := ScriptDir . "\..\Images\cards.png"
 ImagePath8 := ScriptDir . "\..\Images\next.png"
 ImagePath9 := ScriptDir . "\..\Images\ability.png"
 
+global return_check := 0
+
 ; Hotkeys to start and stop the OCR script
 ^+1:: ; Ctrl+Shift+1 to start the OCR script
 {
@@ -37,6 +39,20 @@ SendClick(x, y)
     Click("Left", "Down")  ; Press down
     Sleep(50)  ; Hold down for a moment
     Click("Left", "Up")    ; Release
+    Sleep(100)  ; Delay after the click
+}
+
+; Function to send click at specified coordinates
+SendClick_R(x, y)
+{
+    ; Move the mouse slightly before the main move
+    MouseMove(x + 5, y + 5)
+    Sleep(100)  ; Short delay to ensure Roblox detects the move
+    MouseMove(x, y)  ; Move to the target position
+    Sleep(100)  ; Optional delay for stability
+    Click("Right", "Down")  ; Press down
+    Sleep(50)  ; Hold down for a moment
+    Click("Right", "Up")    ; Release
     Sleep(100)  ; Delay after the click
 }
 
@@ -160,20 +176,21 @@ ClickUntilImagesFound_Yes()
 ; Function to check if both images are found on the screen within the specified region
 ImagesFound_Return()
 {
+    global return_check
     global ImagePath1, ImagePath2
     ImageSearchResult1 := ImageSearch(&x1, &y1, 0, 0, 1920, 1080, "*50 " . ImagePath1)
     ImageSearchResult2 := ImageSearch(&x2, &y2, 0, 0, 1920, 1080, "*50 " . ImagePath2)
     if (ImageSearchResult1 = 1 && ImageSearchResult2 = 1)
     {
         Tooltip("ImageSearch success: Both return button images found at (" . x1 . ", " . y1 . ") and (" . x2 . ", " . y2 . ")")
-        Sleep(1000)
+        Sleep(100)
         Tooltip() ; Hide tooltip
         return true
     }
     else
     {
         Tooltip("ImageSearch failed: Both return button images not found")
-        Sleep(1000)
+        Sleep(100)
         Tooltip() ; Hide tooltip
         SendClick(971, 930)
         return false
@@ -182,20 +199,23 @@ ImagesFound_Return()
 
 ImagesFound_Return_2()
 {
+    global return_check
     global ImagePath1, ImagePath2
     ImageSearchResult1 := ImageSearch(&x1, &y1, 0, 0, 1920, 1080, "*50 " . ImagePath1)
     ImageSearchResult2 := ImageSearch(&x2, &y2, 0, 0, 1920, 1080, "*50 " . ImagePath2)
     if (ImageSearchResult1 = 1 && ImageSearchResult2 = 1)
     {
         Tooltip("ImageSearch success: Both return button images found at (" . x1 . ", " . y1 . ") and (" . x2 . ", " . y2 . ")")
-        Sleep(1000)
+        Sleep(50)
         Tooltip() ; Hide tooltip
+        SendClick(x1, y1)
+        return_check := 1
         return true
     }
     else
     {
         Tooltip("ImageSearch failed: Both return button images not found, continuing")
-        Sleep(1000)
+        Sleep(50)
         Tooltip() ; Hide tooltip
         return false
     }
@@ -210,14 +230,14 @@ ImagesFound_Yes()
     if (ImageSearchResult3 = 1 && ImageSearchResult4 = 1)
     {
         Tooltip("ImageSearch success: Both yes and no images found at (" . x3 . ", " . y3 . ") and (" . x4 . ", " . y4 . ")")
-        Sleep(1000)
+        Sleep(50)
         Tooltip() ; Hide tooltip
         return true
     }
     else
     {
         Tooltip("ImageSearch failed: Both yes and no images not found")
-        Sleep(1000)
+        Sleep(50)
         Tooltip() ; Hide tooltip
         SendClick(971, 930)
         return false
@@ -232,14 +252,14 @@ ImageFound_unit_exit()
     if (ImageSearchResult5 = 1)
     {
         Tooltip("ImageSearch success: Unit exit image found at (" . x5 . ", " . y5 . ")")
-        Sleep(1000)
+        Sleep(50)
         Tooltip() ; Hide tooltip
         return true
     }
     else
     {
         Tooltip("ImageSearch failed: Unit has not been placed")
-        Sleep(1000)
+        Sleep(50)
         Tooltip() ; Hide tooltip
         return false
     }
@@ -253,14 +273,14 @@ ImageFound_unit_maxed()
     if (ImageSearchResult6 = 1)
     {
         Tooltip("ImageSearch success: Unit maxed image found at (" . x6 . ", " . y6 . ")")
-        Sleep(1000)
+        Sleep(50)
         Tooltip() ; Hide tooltip
         return true
     }
     else
     {
         Tooltip("ImageSearch failed: Unit not maxed")
-        Sleep(1000)
+        Sleep(50)
         Tooltip() ; Hide tooltip
         return false
     }
@@ -294,7 +314,7 @@ ImageFound_next()
     if (ImageSearchResult8 = 1)
     {
         Tooltip("ImageSearch success: Next image found at (" . x8 . ", " . y8 . ")")
-        Sleep(1000)
+        Sleep(50)
         Tooltip() ; Hide tooltip
         SendClick(x8,y8)
         return true
@@ -302,7 +322,7 @@ ImageFound_next()
     else
     {
         Tooltip("ImageSearch failed: Next button not found, continuing")
-        Sleep(500)
+        Sleep(50)
         Tooltip() ; Hide tooltip
         return false
     }
@@ -328,6 +348,7 @@ ClickRandomly() {
 
 ; Function to prompt for a valid number
 PromptForNumber() {
+    global return_check
     while true {
         ; Define the maximum integer value
         MaxInt := 2147483647
@@ -455,6 +476,8 @@ PromptForNumber() {
 
             ; Perform actions with the number here
             Loop LoopCount {
+                return_check := 0
+
                 ; Before starting the main script actions, move the mouse first
                 MouseMove(300, 300)
                 Sleep(100)  ; Small sleep to simulate user activity
@@ -516,14 +539,24 @@ PromptForNumber() {
                     Send("{o up}") ; Hold "o" key up
                 }
                 Sleep(500)
-
-                Send("{d down}")  ; Hold "d" key down
-                Loop 30  ; Loop to click space bar multiple times
-                {
-                    Send("{Space}")
-                    Sleep(100)  ; Adjust the sleep time to control the frequency of space bar clicks
+                
+                Loop {     
+                    ; Search for the color
+                    if PixelSearch(&xxx, &yyy, 0, 0, 1920, 1080, 0x005c75, 15) {
+                        ; If the color is found, move the mouse and right click
+                        Loop 3 {
+                            SendClick_R(xxx, yyy)
+                            Sleep(100)
+                        }
+                
+                        ; Break the loop after clicking
+                        break
+                    }
+                    Send("{Right down}")
+                    Sleep(500)
+                    Send("{Right up}")
                 }
-                Send("{d up}")  ; Release "d" key
+                
                 
                 Loop Unit_Slot_1 {
                     Loop {
@@ -538,8 +571,11 @@ PromptForNumber() {
                         if (ImagesFound_Return_2()) {
                             break
                         }
+                        if return_check = 1 {
+                            break
+                        }
                     }
-                    Sleep(500)
+                    Sleep(100)
                     Loop {
                         SendClick(425, 676)
                         if (ImageFound_unit_maxed()) {
@@ -553,7 +589,10 @@ PromptForNumber() {
                         if (ImagesFound_Return_2()) {
                             break
                         }
-                        Sleep(500) 
+                        if return_check = 1 {
+                            break
+                        }
+                        Sleep(100) 
                     }
                 }
 
@@ -570,8 +609,11 @@ PromptForNumber() {
                         if (ImagesFound_Return_2()) {
                             break
                         }
+                        if return_check = 1 {
+                            break
+                        }
                     }
-                    Sleep(1000)
+                    Sleep(100)
                     Loop {
                         SendClick(425, 676)
                         if (ImageFound_unit_maxed()) {
@@ -585,7 +627,10 @@ PromptForNumber() {
                         if (ImagesFound_Return_2()) {
                             break
                         }
-                        Sleep(500) 
+                        if return_check = 1 {
+                            break
+                        }
+                        Sleep(100) 
                     }
                 }
 
@@ -602,8 +647,11 @@ PromptForNumber() {
                         if (ImagesFound_Return_2()) {
                             break
                         }
+                        if return_check = 1 {
+                            break
+                        }
                     }
-                    Sleep(500)
+                    Sleep(100)
                     Loop {
                         SendClick(425, 676)
                         if (ImageFound_unit_maxed()) {
@@ -617,7 +665,10 @@ PromptForNumber() {
                         if (ImagesFound_Return_2()) {
                             break
                         }
-                        Sleep(500) 
+                        if return_check = 1 {
+                            break
+                        }
+                        Sleep(100) 
                     }
                 }
 
@@ -634,8 +685,11 @@ PromptForNumber() {
                         if (ImagesFound_Return_2()) {
                             break
                         }
+                        if return_check = 1 {
+                            break
+                        }
                     }
-                    Sleep(500)
+                    Sleep(100)
                     Loop {
                         SendClick(425, 676)
                         if (ImageFound_unit_maxed()) {
@@ -649,7 +703,10 @@ PromptForNumber() {
                         if (ImagesFound_Return_2()) {
                             break
                         }
-                        Sleep(500) 
+                        if return_check = 1 {
+                            break
+                        }
+                        Sleep(100) 
                     }
                 }
 
@@ -666,8 +723,11 @@ PromptForNumber() {
                         if (ImagesFound_Return_2()) {
                             break
                         }
+                        if return_check = 1 {
+                            break
+                        }
                     }
-                    Sleep(500)
+                    Sleep(100)
                     Loop {
                         SendClick(425, 676)
                         if (ImageFound_unit_maxed()) {
@@ -681,7 +741,10 @@ PromptForNumber() {
                         if (ImagesFound_Return_2()) {
                             break
                         }
-                        Sleep(500) 
+                        if return_check = 1 {
+                            break
+                        }
+                        Sleep(100) 
                     }
                 }
 
@@ -698,8 +761,11 @@ PromptForNumber() {
                         if (ImagesFound_Return_2()) {
                             break
                         }
+                        if return_check = 1 {
+                            break
+                        }
                     }
-                    Sleep(500)
+                    Sleep(100)
                     Loop {
                         SendClick(425, 676)
                         if (ImageFound_unit_maxed()) {
@@ -713,12 +779,17 @@ PromptForNumber() {
                         if (ImagesFound_Return_2()) {
                             break
                         }
-                        Sleep(500) 
+                        if return_check = 1 {
+                            break
+                        }
+                        Sleep(100) 
                     }
                 }
 
-                ClickUntilImagesFound_Return()
-                Sleep(25000)
+                if return_check = 0 {
+                    ClickUntilImagesFound_Return()
+                    Sleep(25000)
+                }
             }
             break
         }
