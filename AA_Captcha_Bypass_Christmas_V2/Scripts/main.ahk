@@ -599,7 +599,7 @@ PromptForNumber() {
                     Loop {
                         SendClick(425, 676)
                         if (ImageFound_unit_maxed()) {
-                            Sleep(100)
+                            Sleep(2000)
                             SendClick(551, 356)
                             break
                         }
@@ -616,193 +616,203 @@ PromptForNumber() {
                     }
                 }
 
-                Loop Unit_Slot_2 {
-                    Loop {
-                        Send("2") ; Press 2 to select the unit
-                        ClickRandomly()
-                        if (ImageFound_unit_exit()) {
-                            break
+                if return_check = 0 {
+                    Loop Unit_Slot_2 {
+                        Loop {
+                            Send("2") ; Press 2 to select the unit
+                            ClickRandomly()
+                            if (ImageFound_unit_exit()) {
+                                break
+                            }
+                            if (ImageFound_next()) {
+                                break
+                            }
+                            if (ImagesFound_Return_2()) {
+                                break
+                            }
+                            if return_check = 1 {
+                                break
+                            }
                         }
-                        if (ImageFound_next()) {
-                            break
+                        Sleep(100)
+                        Loop {
+                            SendClick(425, 676)
+                            if (ImageFound_unit_maxed()) {
+                                Sleep(2000)
+                                SendClick(551, 356)
+                                break
+                            }
+                            if (ImageFound_next()) {
+                                break
+                            }
+                            if (ImagesFound_Return_2()) {
+                                break
+                            }
+                            if return_check = 1 {
+                                break
+                            }
+                            Sleep(100) 
                         }
-                        if (ImagesFound_Return_2()) {
-                            break
-                        }
-                        if return_check = 1 {
-                            break
-                        }
-                    }
-                    Sleep(100)
-                    Loop {
-                        SendClick(425, 676)
-                        if (ImageFound_unit_maxed()) {
-                            Sleep(100)
-                            SendClick(551, 356)
-                            break
-                        }
-                        if (ImageFound_next()) {
-                            break
-                        }
-                        if (ImagesFound_Return_2()) {
-                            break
-                        }
-                        if return_check = 1 {
-                            break
-                        }
-                        Sleep(100) 
                     }
                 }
 
-                Loop Unit_Slot_3 {
-                    Loop {
-                        Send("3") ; Press 3 to select the unit
-                        ClickRandomly()
-                        if (ImageFound_unit_exit()) {
-                            break
+                if return_check = 0 {
+                    Loop Unit_Slot_3 {
+                        Loop {
+                            Send("3") ; Press 3 to select the unit
+                            ClickRandomly()
+                            if (ImageFound_unit_exit()) {
+                                break
+                            }
+                            if (ImageFound_next()) {
+                                break
+                            }
+                            if (ImagesFound_Return_2()) {
+                                break
+                            }
+                            if return_check = 1 {
+                                break
+                            }
                         }
-                        if (ImageFound_next()) {
-                            break
+                        Sleep(100)
+                        Loop {
+                            SendClick(425, 676)
+                            if (ImageFound_unit_maxed()) {
+                                Sleep(2000)
+                                SendClick(551, 356)
+                                break
+                            }
+                            if (ImageFound_next()) {
+                                break
+                            }
+                            if (ImagesFound_Return_2()) {
+                                break
+                            }
+                            if return_check = 1 {
+                                break
+                            }
+                            Sleep(100) 
                         }
-                        if (ImagesFound_Return_2()) {
-                            break
-                        }
-                        if return_check = 1 {
-                            break
-                        }
-                    }
-                    Sleep(100)
-                    Loop {
-                        SendClick(425, 676)
-                        if (ImageFound_unit_maxed()) {
-                            Sleep(100)
-                            SendClick(551, 356)
-                            break
-                        }
-                        if (ImageFound_next()) {
-                            break
-                        }
-                        if (ImagesFound_Return_2()) {
-                            break
-                        }
-                        if return_check = 1 {
-                            break
-                        }
-                        Sleep(100) 
                     }
                 }
 
-                Loop Unit_Slot_4 {
-                    Loop {
-                        Send("4") ; Press 4 to select the unit
-                        ClickRandomly()
-                        if (ImageFound_unit_exit()) {
-                            break
+                if return_check = 0 {
+                    Loop Unit_Slot_4 {
+                        Loop {
+                            Send("4") ; Press 4 to select the unit
+                            ClickRandomly()
+                            if (ImageFound_unit_exit()) {
+                                break
+                            }
+                            if (ImageFound_next()) {
+                                break
+                            }
+                            if (ImagesFound_Return_2()) {
+                                break
+                            }
+                            if return_check = 1 {
+                                break
+                            }
                         }
-                        if (ImageFound_next()) {
-                            break
+                        Sleep(100)
+                        Loop {
+                            SendClick(425, 676)
+                            if (ImageFound_unit_maxed()) {
+                                Sleep(2000)
+                                SendClick(551, 356)
+                                break
+                            }
+                            if (ImageFound_next()) {
+                                break
+                            }
+                            if (ImagesFound_Return_2()) {
+                                break
+                            }
+                            if return_check = 1 {
+                                break
+                            }
+                            Sleep(100) 
                         }
-                        if (ImagesFound_Return_2()) {
-                            break
-                        }
-                        if return_check = 1 {
-                            break
-                        }
-                    }
-                    Sleep(100)
-                    Loop {
-                        SendClick(425, 676)
-                        if (ImageFound_unit_maxed()) {
-                            Sleep(100)
-                            SendClick(551, 356)
-                            break
-                        }
-                        if (ImageFound_next()) {
-                            break
-                        }
-                        if (ImagesFound_Return_2()) {
-                            break
-                        }
-                        if return_check = 1 {
-                            break
-                        }
-                        Sleep(100) 
                     }
                 }
 
-                Loop Unit_Slot_5 {
-                    Loop {
-                        Send("5") ; Press 5 to select the unit
-                        ClickRandomly()
-                        if (ImageFound_unit_exit()) {
-                            break
+                if return_check = 0 {
+                    Loop Unit_Slot_5 {
+                        Loop {
+                            Send("5") ; Press 5 to select the unit
+                            ClickRandomly()
+                            if (ImageFound_unit_exit()) {
+                                break
+                            }
+                            if (ImageFound_next()) {
+                                break
+                            }
+                            if (ImagesFound_Return_2()) {
+                                break
+                            }
+                            if return_check = 1 {
+                                break
+                            }
                         }
-                        if (ImageFound_next()) {
-                            break
+                        Sleep(100)
+                        Loop {
+                            SendClick(425, 676)
+                            if (ImageFound_unit_maxed()) {
+                                Sleep(2000)
+                                SendClick(551, 356)
+                                break
+                            }
+                            if (ImageFound_next()) {
+                                break
+                            }
+                            if (ImagesFound_Return_2()) {
+                                break
+                            }
+                            if return_check = 1 {
+                                break
+                            }
+                            Sleep(100) 
                         }
-                        if (ImagesFound_Return_2()) {
-                            break
-                        }
-                        if return_check = 1 {
-                            break
-                        }
-                    }
-                    Sleep(100)
-                    Loop {
-                        SendClick(425, 676)
-                        if (ImageFound_unit_maxed()) {
-                            Sleep(100)
-                            SendClick(551, 356)
-                            break
-                        }
-                        if (ImageFound_next()) {
-                            break
-                        }
-                        if (ImagesFound_Return_2()) {
-                            break
-                        }
-                        if return_check = 1 {
-                            break
-                        }
-                        Sleep(100) 
                     }
                 }
 
-                Loop Unit_Slot_6 {
-                    Loop {
-                        Send("6") ; Press 6 to select the unit
-                        ClickRandomly()
-                        if (ImageFound_unit_exit()) {
-                            break
+                if return_check = 0 {
+                    Loop Unit_Slot_6 {
+                        Loop {
+                            Send("6") ; Press 6 to select the unit
+                            ClickRandomly()
+                            if (ImageFound_unit_exit()) {
+                                break
+                            }
+                            if (ImageFound_next()) {
+                                break
+                            }
+                            if (ImagesFound_Return_2()) {
+                                break
+                            }
+                            if return_check = 1 {
+                                break
+                            }
                         }
-                        if (ImageFound_next()) {
-                            break
+                        Sleep(100)
+                        Loop {
+                            SendClick(425, 676)
+                            if (ImageFound_unit_maxed()) {
+                                Sleep(2000)
+                                SendClick(551, 356)
+                                break
+                            }
+                            if (ImageFound_next()) {
+                                break
+                            }
+                            if (ImagesFound_Return_2()) {
+                                break
+                            }
+                            if return_check = 1 {
+                                break
+                            }
+                            Sleep(100) 
                         }
-                        if (ImagesFound_Return_2()) {
-                            break
-                        }
-                        if return_check = 1 {
-                            break
-                        }
-                    }
-                    Sleep(100)
-                    Loop {
-                        SendClick(425, 676)
-                        if (ImageFound_unit_maxed()) {
-                            Sleep(100)
-                            SendClick(551, 356)
-                            break
-                        }
-                        if (ImageFound_next()) {
-                            break
-                        }
-                        if (ImagesFound_Return_2()) {
-                            break
-                        }
-                        if return_check = 1 {
-                            break
-                        }
-                        Sleep(100) 
                     }
                 }
 
