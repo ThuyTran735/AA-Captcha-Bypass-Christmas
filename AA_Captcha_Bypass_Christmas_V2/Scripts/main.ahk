@@ -552,7 +552,7 @@ PromptForNumber() {
                 
                 Loop {     
                     ; Search for the color
-                    if PixelSearch(&xxx, &yyy, 0, 0, 1920, 1080, 0x006783, 15) {
+                    if PixelSearch(&xxx, &yyy, 0, 0, 1920, 1080, 0x006783, 10) {
                         ; If the color is found, move the mouse and right click
                         Loop 3 {
                             SendClick_R(xxx, yyy)
@@ -566,6 +566,7 @@ PromptForNumber() {
                     Sleep(500)
                     Send("{Right up}")
                 }
+                Sleep(3000)
 
                 Send("{Escape}")
                 Sleep(500)
