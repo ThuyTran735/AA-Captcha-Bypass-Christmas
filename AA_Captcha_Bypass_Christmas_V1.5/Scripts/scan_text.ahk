@@ -25,8 +25,13 @@ Left::global w -= (w < minsize ? 0 : step)
 Up::global h += step
 Down::global h -= (h < minsize ? 0 : step)
 
-; Ctrl+Shift+C to copy the current OCR text to clipboard
-^+c::A_Clipboard := g_CurrentText, ToolTip("OCR text copied to clipboard!"), Sleep(2000), ToolTip()
+; Ctrl+Shift+C to copy the current OCR text to clipboard 
+^+c:: { 
+    A_Clipboard := g_CurrentText 
+    ToolTip("OCR text copied to clipboard!") 
+    Sleep(2000) 
+    ToolTip()
+}
 
 ; Ctrl+Shift+2 to exit the OCR script
 ^+2::ExitApp
