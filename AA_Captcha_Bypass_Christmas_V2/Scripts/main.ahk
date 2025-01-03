@@ -166,7 +166,7 @@ ClickUntilImagesFound_Yes()
             Sleep(1000)
             SendClick(799, 219)
 
-            Sleep(10000)  ; Wait for 10 seconds before checking again
+            Sleep(5000)  ; Wait for 5 seconds before checking again
         }
 
         Sleep(1000)  ; Wait for 1 second before checking again
