@@ -536,10 +536,9 @@ PromptForNumber() {
                     }
 
                     Sleep(1000)
-                    Send("{a down}") ; Hold "a" key down
-
                     ImageFound_reconnect()
                     if reconnect_check = 0 {
+			Send("{a down}") ; Hold "a" key down
                         Sleep(7500) ; Wait for 7.5 seconds
                         Send("{a up}") ; Release "a" key
                         Sleep(1000)
