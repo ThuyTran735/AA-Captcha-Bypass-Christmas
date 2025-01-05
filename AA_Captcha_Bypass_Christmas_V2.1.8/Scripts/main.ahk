@@ -434,9 +434,10 @@ ClickRandomly() {
 	yy := Random(minY, maxY) ; Generate random y-coordinate within range
     saved_xx := xx
     saved_yy := yy
-
-	SendClick(xx, yy) ; Click at the random coordinates
-	Sleep(100)
+	if !ImageFound_unit_maxed() {
+	    SendClick(xx, yy) ; Click at the random coordinates
+	    Sleep(100)
+	}
 	return [saved_xx, saved_yy]
 }
 
@@ -488,6 +489,7 @@ Unit_Upgrade(num_key) {
         if (ImageFound_unit_maxed()) {
             Sleep(100)
             SendClick(551, 356)
+	    unit_placement_counter := 0
             break
         }
     }
