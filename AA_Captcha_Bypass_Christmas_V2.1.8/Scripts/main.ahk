@@ -509,7 +509,10 @@ Unit_Upgrade(num_key) {
         if (ImageFound_unit_maxed()) {
             Sleep(100)
             SendClick(551, 356)
-	    unit_placement_counter := 0
+            if unit_placement_counter > 25 {
+                unit_placement_counter := 0
+                break
+            }
             break
         }
     }
