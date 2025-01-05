@@ -479,6 +479,11 @@ Unit_Upgrade(num_key) {
         if reconnect_check = 1 {
             break
         }
+        if unit_placement_counter > 25 {
+            unit_placement_counter := 0
+            break
+        }
+	Sleep(150)
         Send(num_key) ; Press a number key to select the unit
         ClickRandomly()
         ImageFound_ability()
@@ -671,59 +676,35 @@ PromptForNumber() {
                             
                             Loop Unit_Slot_1 {
                                 Unit_Upgrade("1")
-                                if unit_placement_counter > 25 {
-                                    unit_placement_counter := 0
-                                    break
-                                }
                             }
 
                             if return_check = 0 {
                                 Loop Unit_Slot_2 {
                                     Unit_Upgrade("2")
-                                    if unit_placement_counter > 25 {
-                                        unit_placement_counter := 0
-                                        break
-                                    }
                                 }
                             }
 
                             if return_check = 0 {
                                 Loop Unit_Slot_3 {
                                     Unit_Upgrade("3")
-                                    if unit_placement_counter > 25 {
-                                        unit_placement_counter := 0
-                                        break
-                                    }
                                 }
                             }
 
                             if return_check = 0 {
                                 Loop Unit_Slot_4 {
                                     Unit_Upgrade("4")
-                                    if unit_placement_counter > 25 {
-                                        unit_placement_counter := 0
-                                        break
-                                    }
                                 }
                             }
 
                             if return_check = 0 {
                                 Loop Unit_Slot_5 {
                                     Unit_Upgrade("5")
-                                    if unit_placement_counter > 25 {
-                                        unit_placement_counter := 0
-                                        break
-                                    }
                                 }
                             }
 
                             if return_check = 0 {
                                 Loop Unit_Slot_6 {
                                     Unit_Upgrade("6")
-                                    if unit_placement_counter > 25 {
-                                        unit_placement_counter := 0
-                                        break
-                                    }
                                 }
                             }
 
