@@ -438,6 +438,8 @@ ClickRandomly() {
 }
 
 Unit_Upgrade(num_key) {
+    global return_check
+    global reconnect_check
     Loop {
         Send(num_key) ; Press a number key to select the unit
         ClickRandomly()
