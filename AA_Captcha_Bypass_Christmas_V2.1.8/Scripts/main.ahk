@@ -347,6 +347,21 @@ ImageFound_unit_maxed()
 }
 
 ; Function to check if both images are found on the screen within the specified region
+ImageFound_unit_maxed_2()
+{
+    global ImagePath6
+    ImageSearchResult6 := ImageSearch(&x6, &y6, 0, 0, 1920, 1080, "*50 " . ImagePath6)
+    if (ImageSearchResult6 = 1)
+    {
+        return true
+    }
+    else
+    {
+        return false
+    }
+}
+
+; Function to check if both images are found on the screen within the specified region
 ImageFound_cards()
 {
     global ImagePath7
@@ -434,7 +449,7 @@ ClickRandomly() {
 	yy := Random(minY, maxY) ; Generate random y-coordinate within range
     saved_xx := xx
     saved_yy := yy
-	if !ImageFound_unit_maxed() {
+	if !ImageFound_unit_maxed_2() {
 	    SendClick(xx, yy) ; Click at the random coordinates
 	    Sleep(100)
 	}
