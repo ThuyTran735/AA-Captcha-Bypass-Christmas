@@ -16,3 +16,5 @@ Step 6: Open up your newly extracted folder. Click “Scripts”. Run “main”
 Step 7: Open roblox. Join an AA server and don’t move your character or camera. Put Roblox on full screen (F11). Press CTRL + F4 to start the script. When prompted, choose a number (Example: 100000 to loop 100000 times).
 
 Other: CTRL + F3 to stop the script. If the script messes up, let it run for 30 seconds before asking for additional help. If you have HDR or Night Mode enabled, turn it off. 
+
+Settings: Graphics to 1. Camera mode to Default (Classic). Movement mode to Default (Classic). Roblox Menu set to ESC. Roblox Player Menu set to TAB. Auto-Skip Waves on, Disable Auto-Open Upgrade UI off, Show Upgrade UI on Left on.
