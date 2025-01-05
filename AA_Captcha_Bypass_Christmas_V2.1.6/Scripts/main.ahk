@@ -695,6 +695,7 @@ PromptForNumber() {
 ; Hotkey to trigger the pixel color check and clicking loop
 ^F4:: ; Ctrl+F4 to start the pixel scan and clicking loop
 {
+    Unit_GUI_Save() 
     PromptForNumber()
 }
         
