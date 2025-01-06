@@ -646,7 +646,7 @@ PromptForNumber() {
                             
                             Loop {     
                                 ; Search for the color
-                                if PixelSearch(&xxx, &yyy, 0, 0, 1920, 800, 0x006783, 1) {
+                                if PixelSearch(&xxx, &yyy, 0, 0, 1920, 800, 0x006783, 3) {
                                     ; If the color is found, move the mouse and right click
                                     Loop 3 {
                                         SendClick_R(xxx, yyy)
@@ -656,13 +656,11 @@ PromptForNumber() {
                                     ; Break the loop after clicking
                                     break
                                 }
-                                Send("{Right down}")
-                                Sleep(500)
-                                Send("{Right up}")
                                 ImageFound_reconnect()
                                 if reconnect_check = 1 {
                                     break
                                 }
+																break
                             }
                             Sleep(3000)
 
