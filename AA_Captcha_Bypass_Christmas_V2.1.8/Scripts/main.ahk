@@ -200,7 +200,6 @@ ClickUntilImagesFound_Yes()
             ImageFound_reconnect()
             if reconnect_check = 0 {
                 if !ImagesFound_Yes() {
-                    Sleep(1000) ; Wait for 1 second 
         
                     ; Redo Captcha
                     MouseMove(300, 300)
@@ -208,9 +207,8 @@ ClickUntilImagesFound_Yes()
                     MouseMove(100, 100)  ; Simulate user moving the mouse
                     Sleep(500)  ; Ensure Roblox detects it
         
-                    Sleep(1000)
                     SendClick(200, 503)
-                    Sleep(7000)
+                    Sleep(2000)
                     if !ImagesFound_Yes() {
                         Send("{a down}") ; Hold "a" key down
                         Sleep(7500) ; Wait for 7.5 seconds
