@@ -596,7 +596,7 @@ PromptForNumber() {
 
                         ImageFound_reconnect()
                         if reconnect_check = 0 {
-                            Sleep(15000)
+                            Sleep(5000)
                             ClickUntilImagesFound_Yes()
                             Sleep(500)
 
