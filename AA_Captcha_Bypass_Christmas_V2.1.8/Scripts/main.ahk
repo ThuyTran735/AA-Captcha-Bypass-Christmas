@@ -208,7 +208,7 @@ ClickUntilImagesFound_Yes()
                     Sleep(500)  ; Ensure Roblox detects it
         
                     SendClick(200, 503)
-                    Sleep(1000)
+                    Sleep(2000)
                     if !ImagesFound_Yes() {
                         Send("{a down}") ; Hold "a" key down
                         Sleep(7500) ; Wait for 7.5 seconds
