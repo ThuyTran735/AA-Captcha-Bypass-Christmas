@@ -676,7 +676,7 @@ PromptForNumber() {
                             Send("{Tab}")
                             Sleep(500)
 
-                            Loop 15 {
+                            Loop 25 {
                                 Send("{i down}") ; Hold "i" key down
                                 Sleep(100)
                                 Send("{i up}") ; Hold "o" key up
