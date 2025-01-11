@@ -713,19 +713,24 @@ PromptForNumber() {
                             
                                     ; Break the loop after clicking
                                     break
-                                } else {
-				    if PixelSearch(&xxx, &yyy, 0, 0, 1920, 1080, 0x066B81, 5) {
+                                } else if PixelSearch(&xxx, &yyy, 0, 0, 1920, 1080, 0x066B81, 5) { 
                                     ; If the color is found, move the mouse and right click
-                                        Loop 3 {
+                                    Loop 3 {
                                         SendClick_R(xxx, yyy)
                                         Sleep(100)
                                     }
-				} 
+                                } else if PixelSearch(&xxx, &yyy, 0, 0, 1920, 1080, 0x01677B, 5) { 
+                                    ; If the color is found, move the mouse and right click
+                                    Loop 3 {
+                                        SendClick_R(xxx, yyy)
+                                        Sleep(100)
+                                    }
+				                }                                 
                                 ImageFound_reconnect()
                                 if reconnect_check = 1 {
                                     break
                                 }
-																break
+								break
                             }
                             Sleep(3000)
 
@@ -784,6 +789,7 @@ PromptForNumber() {
             break
         }
     }
+    return
 }
 
 ; Hotkey to trigger the pixel color check and clicking loop
