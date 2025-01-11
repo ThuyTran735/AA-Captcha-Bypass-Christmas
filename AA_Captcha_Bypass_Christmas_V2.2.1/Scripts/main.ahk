@@ -685,7 +685,7 @@ PromptForNumber() {
                             ; Move the mouse down 700 pixels
                             MouseMove(960, 700)
 
-                            Loop 15 {
+                            Loop 25 {
                                 Send("{o down}") ; Hold "o" key down
                                 Sleep(100)
                                 Send("{o up}") ; Hold "o" key up
