@@ -732,7 +732,7 @@ PromptForNumber() {
                                 }
 								break
                             }
-                            Sleep(3000)
+                            Sleep(6000)
 
                             Send("{Escape}")
                             Sleep(500)
